@@ -208,66 +208,6 @@ function Get-IPRangeDetails {
     return $IPRangeObject
 }
 
-function Get-IPInterfaceIPs {
-    <#
-    .SYNOPSIS 
-    Find all the active Interfaces and return their IP Addresses
-
-    .DESCRIPTION 
-    A simplified version of get-netipaddress, only gets the UP Interfaces and returns IP addresses that have been assigned via DHCP or manual 
-    Does not include internal, loopback or IPv6 IP addreseses
-
-    .EXAMPLE 
-
-    Get-InterfaceIPs
-
-    Name           : Private Network Connection
-    IFIndex        : 12
-    MacAddress     : 02-21-DC-6A-FC-C1
-    IPAddress      : {10.5.24.153/24}
-    PSComputerName : ZDEXDWS007
-    RunspaceId     : 38cfa688-6b7d-4d3f-8e56-bbbb651cb61e
-
-
-    .PARAMETER ComputerName
-    A remote computer that you want to find the IP addresses for 
-
-    .INPUTS 
-    None. You cannont pipe objects 
-
-    .OUTPUTS
-    PSObject. Returns a Custom PS object with Interface Details 
-    #>
-    [CmdletBinding()]
-    param(
-        [string]$ComputerName
-    )
-    if (!$ComputerName) { 
-        $ComputerName = $env:COMPUTERNAME
-    }
-    $InterfaceDetails = Invoke-Command -ComputerName $ComputerName -ScriptBlock {
-        $InterfaceDetails = New-Object System.Collections.ArrayList
-        $Adapters = Get-NetAdapter -Physical | Where-Object { $_.Status -eq "Up" }
-        foreach ( $Adapter in $Adapters ) {
-            $IPDetails = Get-NetIPAddress -InterfaceIndex $($Adapter.InterfaceIndex) | Where-Object { $_.PrefixOrigin -eq "Manual" -or $_.PrefixOrigin -eq "DHCP"}
-            $Interface = New-Object psobject
-            $Interface | Add-Member -MemberType NoteProperty -Name Name -Value $($Adapter.Name)
-            $Interface | Add-Member -MemberType NoteProperty -Name IFIndex -Value $($Adapter.InterfaceIndex)
-            $Interface | Add-Member -MemberType NoteProperty -Name MacAddress -Value $($Adapter.MacAddress)
-            $IPArray = New-Object System.Collections.ArrayList
-            foreach ($IP in $IPDetails ) {
-                [void]$IPArray.Add("$($IP.IPAddress)/$($IP.PrefixLength)")
-            }
-            $Interface | Add-Member -MemberType NoteProperty -Name IPAddress -Value $IPArray
-
-            [void]$InterfaceDetails.Add($Interface) 
-        }
-
-        return $InterfaceDetails
-    }
-    return $InterfaceDetails
-}
-
 
 
 
