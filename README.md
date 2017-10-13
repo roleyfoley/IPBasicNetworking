@@ -53,16 +53,3 @@ A simplified version of Get-NetIPAddress which returns only UP interfaces and th
     IPAddress      : {10.5.24.153/24}
     PSComputerName : ZDEXDWS007
     RunspaceId     : 38cfa688-6b7d-4d3f-8e56-bbbb651cb61e
-
-
-## Get-IPStaticRouteTable
-A simplified version of Get-NetRoute, filtered for Static IPv4Routes 
-   
-    Get-StaticRouteTable
-
-    ifIndex DestinationPrefix                              NextHop                                  RouteMetric PolicyStore
-    ------- -----------------                              -------                                  ----------- -----------
-    12      169.254.169.254/32                             10.5.24.1                                          0 ActiveStore
-    12      169.254.169.251/32                             10.5.24.1                                          0 ActiveStore
-    12      169.254.169.250/32                             10.5.24.1                                          0 ActiveStore
-    12      0.0.0.0/0                                      10.5.24.1                                          0 ActiveStore
