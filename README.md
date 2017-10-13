@@ -40,16 +40,3 @@ Given a FirstIP address and Last IP calculate the smallest subnets possible to i
     LastIP   : 10.1.20.1/32
     IPCount  : 4864
     SuperNet : 10.1.0.0/19
-
-
-## Get-IPInterfaceIPs
-A simplified version of Get-NetIPAddress which returns only UP interfaces and those configured with IPv4 via DHCP or Manual
-
-    Get-IPInterfaceIPs
-
-    Name           : Private Network Connection
-    IFIndex        : 12
-    MacAddress     : 02-21-DC-6A-FC-C1
-    IPAddress      : {10.5.24.153/24}
-    PSComputerName : ZDEXDWS007
-    RunspaceId     : 38cfa688-6b7d-4d3f-8e56-bbbb651cb61e
