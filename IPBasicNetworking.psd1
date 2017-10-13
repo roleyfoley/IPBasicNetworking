@@ -66,8 +66,7 @@ PowerShellVersion = '4.0'
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = 'Get-IPNetDetails', 'Test-IPInRange', 'Get-IPRangeDetails', 
-               'Get-IPInterfaceIPs'
+FunctionsToExport = 'Get-IPNetDetails', 'Test-IPInRange', 'Get-IPRangeDetails'
 
 # Cmdlets to export from this module
 CmdletsToExport = '*'
