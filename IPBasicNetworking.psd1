@@ -18,16 +18,16 @@ ModuleVersion = '1.0.258212'
 GUID = 'c64863c8-67f0-4590-b564-0898451869f0'
 
 # Author of this module
-Author = 'RoleyFoley'
+Author = 'Michael Foley'
 
 # Company or vendor of this module
-CompanyName = 'RoleyFoley'
+CompanyName = ''
 
 # Copyright statement for this module
-Copyright = '(c) 2017RoleyFoley.'
+Copyright = ''
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'This module contains a collection of functions that provide basic network information. The Module is intended to be generic and provides the general network level information you would need when configuring a network or working with networks.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '4.0'
@@ -75,7 +75,7 @@ CmdletsToExport = '*'
 VariablesToExport = '*'
 
 # Aliases to export from this module
-AliasesToExport = 'Get-NetworkDetails', 'Get-InterfaceIPs', 'Get-StaticRouteTable'
+AliasesToExport = '*'
 
 # List of all modules packaged with this module
 # ModuleList = @()
